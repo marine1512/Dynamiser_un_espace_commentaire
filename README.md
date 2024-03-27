@@ -1,1 +1,3 @@
-#Dynamiser_un_espace_commentaire
+- modification du fichier index.html
+- Ajout de la balise <script>
+
