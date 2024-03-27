@@ -94,5 +94,51 @@
       </div>
     </div>
   </div>
+<script>
+  // Déclaration du formulaire 
+  let form = document.getElementById("myForm");
+
+  // Ajout de l'event en cliquant sur le bouton "envoyer" 
+  form.addEventListener("submit", (e) => {
+    // Déclarations des champs et du message d'erreur
+    let firstName = document.getElementById("first-name");
+    let lastName = document.getElementById("last-name");
+    let message = document.getElementById("message");
+    let errorMessage = document.getElementById("error-message"); 
+
+    // Stopper rechargement de la page afin de vérifier
+    e.preventDefault();
+
+    if (firstName.value =="" || lastName.value =="" || message.value =="") {
+        errorMessage.style.display ="block"; // Affichage du messsage d'erreur si les champs ne sont pas remplis
+        
+    } else {
+        errorMessage.style.display ="none"; // Cacher le message d'erreur si formulaire rempli
+        // Création d'éléments et des class et les ratacher aux parents
+        let div = document.createElement("div");
+        div.classList.add("flex", "space-x-4", "text-sm", "text-gray-500");
+        let commentList = document.getElementById("comment-list");
+        commentList.appendChild(div);    
+        let div2 = document.createElement("div");
+        div2.classList.add("flex-1", "py-10", "border-t", "border-gray-200");
+        div.appendChild(div2);
+        let name = document.createElement("h3");
+        name.classList.add("font-medium", "text-gray-900");
+        div2.appendChild(name);
+        let div3 = document.createElement("div");
+        div3.classList.add("prose", "prose-sm", "mt-4", "max-w-none", "text-gray-500");
+        div2.appendChild(div3);
+        let paragraphe = document.createElement("p");
+        div3.appendChild(paragraphe);
+
+        // Affichage du nom, prénom et commentaire
+        name.innerHTML = firstName.value + " " + lastName.value;
+        paragraphe.innerHTML = message.value;
+
+        // Retour à zero de l'affichage
+        form.reset();
+    }
+  })
+</script>
 </body>
 </html>
